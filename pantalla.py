@@ -259,7 +259,7 @@ class Juego(Pantalla):
                 if event.key == pygame.K_b:
                     if self.jugador2 != None:
                         if self.jugador1.image_rect.colliderect(self.jugador2.image_rect) and self.jugador1.image_rect.y >= (self.jugador2.image_rect.y-10) and self.jugador1.image_rect.y <= (self.jugador2.image_rect.y+10):
-                            
+                            self.reproducir_sonido()
                             self.jugador2.bajar_vida()
                             self.jugador1.score += 5
                         
