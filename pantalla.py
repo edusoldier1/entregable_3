@@ -221,6 +221,11 @@ class Juego(Pantalla):
         except:
             return 0,0,"",True,0,100
 
+
+    def reproducir_sonido(self, musica):
+        s = pygame.mixer.Sound(os.getcwd() + "/sonidos/golpe.wav")
+        pygame.mixer.Sound.play(s)
+
     def handle_events(self):
         keys = pygame.key.get_pressed()
 
@@ -254,8 +259,7 @@ class Juego(Pantalla):
                 if event.key == pygame.K_b:
                     if self.jugador2 != None:
                         if self.jugador1.image_rect.colliderect(self.jugador2.image_rect) and self.jugador1.image_rect.y >= (self.jugador2.image_rect.y-10) and self.jugador1.image_rect.y <= (self.jugador2.image_rect.y+10):
-                            pygame.mixer.music.load(os.getcwd() + "/sonidos/golpe.mp3")
-                            pygame.mixer.music.play()
+                            
                             self.jugador2.bajar_vida()
                             self.jugador1.score += 5
                         
