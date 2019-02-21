@@ -222,7 +222,7 @@ class Juego(Pantalla):
             return 0,0,"",True,0,100
 
 
-    def reproducir_sonido(self, musica):
+    def reproducir_sonido(self):
         s = pygame.mixer.Sound(os.getcwd() + "/sonidos/golpe.wav")
         pygame.mixer.Sound.play(s)
 
