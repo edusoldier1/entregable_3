@@ -1,6 +1,6 @@
 import pygame, random, sys, os, time
 from red import Red
-#from cliente import listar, eliminar, insertar, actualizar
+from cliente import listar, eliminar, insertar, actualizar
 
 pygame.font.init()
 
@@ -13,6 +13,8 @@ fondo = ""
 apodo = ""
 personaje1 = ""
 personaje2 = ""
+
+base_url = "http://localhost:4000/"
 
 velocidad_v = 3
 velocidad_h = 5
@@ -202,7 +204,7 @@ class Juego(Pantalla):
         self.set_nombre_ventana("Jugando")
         self.handle_events()
         self.update()
-        self.num = insertar(apodo,0)
+        self.num = insertar(base_url,apodo,0)
 
     
     @staticmethod
@@ -272,14 +274,14 @@ class Juego(Pantalla):
             self.canvas.blit(texto,(350,0))
             time.sleep(10)
             self.manager.cambiar_pantalla(Login(self.manager))
-            print(actualizar(self.num,apodo,self.jugador1.score))
+            print(actualizar(base_url,self.num,apodo,self.jugador1.score))
         elif self.jugador2.vida <= 0:
             fuente = pygame.font.SysFont("Verdana", 30)
             texto = fuente.render("GANASTE, "+apodo,0,(0,0,0))
             self.canvas.blit(texto,(350,0))
             time.sleep(10)
             self.manager.cambiar_pantalla(Login(self.manager))
-            print(actualizar(self.num,apodo,self.jugador1.score))
+            print(actualizar(base_url,self.num,apodo,self.jugador1.score))
 
     def update(self):
         global personaje2
